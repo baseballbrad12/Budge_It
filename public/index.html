@@ -9,6 +9,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles.css">
+  <!--Linking Manifest-->
+  <link rel="manifest" href="manifest.webmanifest">
 
   <title>Budget Tracker</title>
 </head>
@@ -43,5 +45,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="index.js"></script>
+
+  <!--Incorporating service-worker.js-->
+  <script type="text/javascript">(
+    function ()
+    {
+      if('serviceWorker' in navigator)
+      {
+        navigator.serviceWorker.register('./service-worker.js', { scope: '/' })
+        .then(()=> { console.log('Service worker registered successfully.'); })
+        .catch((error) => { console.log('Service worker failure.', error); })
+      }
+      else
+      {
+        console.log('Service worker not found.');
+      }
+    })();
+  </script>
+
 </body>
 </html>
